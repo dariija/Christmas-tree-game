@@ -2,7 +2,7 @@ import React from 'react'
 import { useEffect, useState } from 'react'
 
 import T_ToyCard from '../../types/T_ToyCard'
-import images from '../../assets/toys/images'
+import images from '../../data/images'
 import missingImg from '../../assets/svg/missing.svg'
 
 type Props = {
