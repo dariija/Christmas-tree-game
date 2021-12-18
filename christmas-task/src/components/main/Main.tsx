@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react'
 
 import ToySection from '../sections/toy-section/ToySection'
@@ -6,6 +6,8 @@ import FilterSection from '../sections/filter-section/FilterSection'
 import T_ToyCard from '../../types/T_ToyCard';
 import T_Filters from '../../types/T_Filters';
 import filterToys from '../../functions/filterToys';
+import saveToLocalStorage from '../../functions/saveToLocalStorage';
+import checkLocalStorage from '../../functions/checkLocalStorage';
 
 type Props = {
   toysData: T_ToyCard[], 
@@ -76,6 +78,14 @@ export default function Main({toysData, selectToys} : Props) {
     select: selectToys
   };
 
+  useEffect(() => {
+    checkLocalStorage(filters);
+  }, []);
+
+  window.onunload = () => {
+    saveToLocalStorage(filters);
+  };
+  
   let filteredToysData = filterToys(toysData, filters);
 
     return(
