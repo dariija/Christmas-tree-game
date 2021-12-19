@@ -1,11 +1,12 @@
 import React, { useState } from "react";
 import ReactDOM from "react-dom";
 
+import './style.css'
 import Header from './components/header/Header';
-import Main from './components/main/Main'
+import MainToys from './components/main/Main'
 import Footer from './components/footer/Footer';
 import toysData from './data/data'
-import './style.css'
+import MainTree from "./components/main/MainTree";
 
 
 const App = () => {
@@ -24,7 +25,15 @@ const App = () => {
   return (
     <React.Fragment>
       <Header activePage={activePage} handleChangeActivePage={setActivePage} selectedToysLogo={selectedToysLogo}/>
-      <Main toysData={toysData} selectToys={selectToys}/>
+
+      <main className="main">
+        <div className="container">
+          <MainToys toysData={toysData} selectToys={selectToys}/>
+          {/* <MainTree toysData={toysData} selectedToysNumbers={selectToys.value}/> */}
+
+        </div>
+      </main>
+
       <Footer />
     </React.Fragment>
   )

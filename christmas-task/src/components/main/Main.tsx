@@ -19,7 +19,7 @@ type Props = {
   }
 }
 
-export default function Main({toysData, selectToys} : Props) {
+export default function MainToys({toysData, selectToys} : Props) {
   
   const [search, setSearch] = useState<string>('');
   const [sorting, setSorting] = useState<string>('-');
@@ -89,13 +89,9 @@ export default function Main({toysData, selectToys} : Props) {
   let filteredToysData = filterToys(toysData, filters);
 
     return(
-      <main className="main">
-        <div className="container">
-          <div className="main__content">
+          <div className="main__toys-page">
             <FilterSection toysData = {toysData} filters={filters} />
             <ToySection toysData = {filteredToysData} select={filters.select}/>
           </div>
-        </div>
-      </main>  
     )
 }

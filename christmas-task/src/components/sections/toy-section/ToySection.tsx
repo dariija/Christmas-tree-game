@@ -1,5 +1,5 @@
 import React from "react";
-import ToyCard from "../../toy-card/ToyCard";
+import ToyCard from "../../cards/ToyCard";
 import T_ToyCard from '../../../types/T_ToyCard'
 
 type Props = {
