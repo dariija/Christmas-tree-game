@@ -10,7 +10,6 @@ export default function ResetFilters({filters}: Props) {
 
     const onResetFilters = () => {
         filters.search.setValue('');
-        filters.sorting.setValue('-');
         filters.shapes.setValue({});
         filters.colours.setValue({});
         filters.sizes.setValue({});
@@ -21,6 +20,7 @@ export default function ResetFilters({filters}: Props) {
 
     const onResetSettings = () => {
         onResetFilters();
+        filters.sorting.setValue('-');
         filters.select.setValue([])
         localStorage.clear();
     };
