@@ -16,7 +16,7 @@ type Props = {
 export default function ToyCard({ toyData, select }: Props) {
     const [toyCardWarning, setToyCardWarning] = useState<boolean>(false);
 
-    const showWarning = (event: any) => {
+    const showWarning = (event: React.MouseEvent<HTMLLabelElement> | React.FocusEvent<HTMLLabelElement>) => {
         const hasToy = select.value.includes(event.currentTarget.htmlFor);
         if (select.value.length === 20 && !hasToy) {
             setToyCardWarning(true);
@@ -28,15 +28,17 @@ export default function ToyCard({ toyData, select }: Props) {
     };
 
     const handlerChange = ({ target }: { target: HTMLInputElement }) => {
+        const toyDataObj = toyData;
+
         if (target.checked) {
             if (select.value.length < 20) {
                 select.setValue([...select.value, ...[target.id]]);
-                toyData.selected = true;
+                toyDataObj.selected = true;
             }
         } else {
             const selectedToysWithoutThis = select.value.filter((selected) => selected !== target.id);
             select.setValue(selectedToysWithoutThis);
-            toyData.selected = false;
+            toyDataObj.selected = false;
         }
     };
 

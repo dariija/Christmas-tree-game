@@ -14,8 +14,9 @@ type Props = {
 
 export default function QuantityFilter({ quantityOptions, quantity }: Props) {
     const quantityValues = Array.from(quantityOptions, (value) => +value);
-    quantity.min = Math.min(...quantityValues);
-    quantity.max = Math.max(...quantityValues);
+    const quantityObj = quantity;
+    quantityObj.min = Math.min(...quantityValues);
+    quantityObj.max = Math.max(...quantityValues);
 
     return (
         <div className="quantity-filter">

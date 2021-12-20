@@ -1,7 +1,3 @@
-export interface IFilters {
-    [key: string]: any;
-}
-
 type TFilters = {
     search: {
         value: string;

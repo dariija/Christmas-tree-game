@@ -14,8 +14,9 @@ type Props = {
 
 export default function PurchaseYearFilter({ yearsOptions, years }: Props) {
     const yearsValues = Array.from(yearsOptions, (value) => +value);
-    years.min = Math.min(...yearsValues);
-    years.max = Math.max(...yearsValues);
+    const yearsObj = years;
+    yearsObj.min = Math.min(...yearsValues);
+    yearsObj.max = Math.max(...yearsValues);
 
     return (
         <div className="purchase-year-filter">
