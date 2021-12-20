@@ -36,13 +36,13 @@ export default function DoubleRange({ range }: Props) {
             marks={{
                 [range.min]: {
                     style: {
-                        color: 'white',
+                        color: 'rgb(71, 59, 59)',
                     },
                     label: `${range.value[0]}`,
                 },
                 [range.max]: {
                     style: {
-                        color: 'white',
+                        color: 'rgb(71, 59, 59)',
                     },
                     label: `${range.value[1]}`,
                 },
