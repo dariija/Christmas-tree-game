@@ -1,15 +1,15 @@
-import { I_Filters } from "../types/T_Filters"
+import TFilters from '../types/TFilters';
 
-export default function saveToLocalStorage(data: I_Filters) {
-    for (let [name, info] of Object.entries(data)) {
-      if (name !== 'search') {
-        if ( typeof info.value === 'string' ) {
-          localStorage.setItem(name, info.value)
-        };
-  
-        if ( typeof info.value === 'object' ) {
-          localStorage.setItem(name, JSON.stringify(info.value))
+export default function saveToLocalStorage(data: TFilters) {
+    Array.from(Object.entries(data)).forEach(([name, info]) => {
+        if (name !== 'search') {
+            if (typeof info.value === 'string') {
+                localStorage.setItem(name, info.value);
+            }
+
+            if (typeof info.value === 'object') {
+                localStorage.setItem(name, JSON.stringify(info.value));
+            }
         }
-      }
-    }
-  }
+    });
+}

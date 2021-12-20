@@ -1,19 +1,18 @@
-import React from "react";
-import DoubleRange from "../../range/DoubleRange";
+import React from 'react';
+import DoubleRange from '../../range/DoubleRange';
 
 type Props = {
-    quantityOptions: Set<string>,
+    quantityOptions: Set<string>;
     quantity: {
-        name: string,
-        min: number,
-        max: number,
-        value: number[],
-        setValue: React.Dispatch<React.SetStateAction<number[]>>
-    }
-}
+        name: string;
+        min: number;
+        max: number;
+        value: number[];
+        setValue: React.Dispatch<React.SetStateAction<number[]>>;
+    };
+};
 
-export default function QuantityFilter({quantityOptions, quantity}: Props) {
-    
+export default function QuantityFilter({ quantityOptions, quantity }: Props) {
     const quantityValues = Array.from(quantityOptions, (value) => +value);
     quantity.min = Math.min(...quantityValues);
     quantity.max = Math.max(...quantityValues);
@@ -21,7 +20,7 @@ export default function QuantityFilter({quantityOptions, quantity}: Props) {
     return (
         <div className="quantity-filter">
             <p className="quantity-filter__title">Quantity</p>
-            <DoubleRange range={quantity}/>
+            <DoubleRange range={quantity} />
         </div>
-    )
+    );
 }
