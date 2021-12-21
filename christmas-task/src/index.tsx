@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import MainToys from './components/main/Main';
 import Footer from './components/footer/Footer';
 import toysData from './data/data';
+import './self-rating';
 // import MainTree from "./components/main/MainTree";
 
 function App() {
