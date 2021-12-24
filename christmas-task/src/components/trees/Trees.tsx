@@ -1,16 +1,23 @@
 import React from 'react';
 import ChoiceCard from '../cards/ChoiceCard';
+import tree from '../../data/trees';
 
-export default function Trees() {
+type Props = {
+    settings: {
+        value: string;
+        setValue: React.Dispatch<React.SetStateAction<string>>;
+    };
+};
+
+export default function Trees({ settings }: Props) {
     const cardsType = 'tree';
-    const imgQuantity = 6;
 
     return (
         <div className="trees">
             <p className="trees__title ">Choose tree</p>
             <div className="trees__content">
-                {Array.from(Array(imgQuantity).keys()).map((value) => (
-                    <ChoiceCard name={cardsType} num={value} key={value.toString()} />
+                {Object.entries(tree).map(([num, src]) => (
+                    <ChoiceCard name={cardsType} num={num} key={num} src={src} settings={settings} />
                 ))}
             </div>
         </div>
