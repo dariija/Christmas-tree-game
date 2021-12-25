@@ -867,6 +867,7 @@ select {
 .tree-main__tree {
     width: 50%;
     min-width: 490px;
+    position: relative;
 
     display: flex;
     /* align-items: flex-end; */
@@ -1078,7 +1079,7 @@ select {
 
 
 
-/* ----------- Snow -------------- */
+/* ----------- Snow-option -------------- */
 
 .snow-option {
     display: inline-block;
@@ -1115,6 +1116,29 @@ select {
 .snow-option:hover .snow-option__view,
 .snow-option__checkbox:checked + .snow-option__view  {
     background-image: url('./assets/svg/snow_active.svg');
+}
+
+/* ----------- Snow-decor -------------- */
+
+.snow-decor {
+    width: 100%;
+    height: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: url('./assets/snow/snow.png'), url('./assets/snow/snow_2.png'), url('./assets/snow/snow_3.png') no-repeat;
+    animation: snow-animation infinite linear 15s;
+    animation-play-state: paused;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+@keyframes snow-animation {
+    0% {background-position: 0px 0px, 0px 0px, 0px 0px;}
+    100% {background-position: 500px 500px, 400px 400px, 300px 300px;}
 }
 
 /* ----------- Selected-toys -------------- */
@@ -1306,6 +1330,7 @@ select {
     animation-play-state: paused;
     opacity: 0;
     visibility: hidden;
+    pointer-events: none;
 }
 
 .fairly-light-decor-part__item:nth-child(2n+1) {
