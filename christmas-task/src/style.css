@@ -231,8 +231,7 @@ select {
     border-radius: 50%;
 }
 
-.audio,
-.snow {
+.audio {
     width: 30px;
     height: 30px;
 
@@ -242,10 +241,6 @@ select {
 
 .audio {
     background-image: url('./assets/svg/audio.svg');
-}
-
-.snow {
-    background-image: url('./assets/svg/snow.svg');
 }
 
 /* ----------- Main -------------- */
@@ -833,43 +828,29 @@ select {
 
 /* ----------- Scrollbar -------------- */
 
-.filter__content::-webkit-scrollbar {
+.filter__content::-webkit-scrollbar,
+.toys::-webkit-scrollbar,
+.tree-main__col::-webkit-scrollbar {
     width: 2px;
     background-color: #f9f9fd;
 }
 
-.filter__content::-webkit-scrollbar-thumb {
+.filter__content::-webkit-scrollbar-thumb,
+.toys::-webkit-scrollbar-thumb,
+.tree-main__col::-webkit-scrollbar-thumb  {
     border-radius: 10px;
     background-color: #7e7569;
 }
   
-.filter__content::-webkit-scrollbar-track {
+.filter__content::-webkit-scrollbar-track,
+.toys::-webkit-scrollbar-track,
+.tree-main__col::-webkit-scrollbar-track {
     box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
     border-radius: 10px;
     background-color: #f9f9fd;
 }
 
-.toys::-webkit-scrollbar {
-    width: 2px;
-    background-color: #f9f9fd;
-}
-
-.toys::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background-color: #7e7569;
-}
-  
-.toys::-webkit-scrollbar-track {
-    box-shadow: inset 0 0 6px rgba(0,0,0,0.2);
-    border-radius: 10px;
-    background-color: #f9f9fd;
-}
-
-
-
-
-  /*  ------Tree Main Page ------  */
-
+/*  ------Tree Main Page ------  */
 
 .main__tree-page {
     width: 100%;
@@ -880,32 +861,57 @@ select {
     flex-direction: row;
     justify-content: space-between;
 
-    gap: 20px;
+    gap: 10px;
 }
 
 .tree-main__tree {
     width: 50%;
+    min-width: 490px;
+
+    display: flex;
+    /* align-items: flex-end; */
+    justify-content: center;
+    flex-grow: 1;
 
     border-radius: 10px;
-    background-color: crimson;
-    /* background-image: url('../assets/test/7.jpg'); */
     background-repeat: no-repeat;
     background-size: cover;
     background-position: 50% 50%;
+
+    background-color: rgb(228 228 228 / 15%); 
+    box-shadow: 0px 10px 13px 5px rgb(0 0 0 / 15%);
+    overflow: hidden;
+    
 }
 
 .tree-main__col {
+    padding: 10px;
     /* width: 25%; */
-    width: 400px;
-
+    /* width: 400px; */
     height: 100%;
+    min-width: 100px;
 
     display: flex;
     flex-direction: column;
     gap: 20px;
 
-    background-color: rgba(255, 255, 255, 0.534);
+    /* background-color: rgba(255, 255, 255, 0.534); */
     border-radius: 10px;
+    backdrop-filter: blur(8px); 
+    background-color: rgb(228 228 228 / 15%); 
+    box-shadow: 0px 10px 13px 5px rgb(0 0 0 / 15%);
+    overflow: auto;
+}
+
+.tree-main__col_left {
+    /* min-width: 210px; */
+    max-width: 385px;
+
+}
+
+.tree-main__col_right {
+    /* min-width: 180px; */
+    max-width: 350px;
 }
 
 .trees__title, 
@@ -929,16 +935,17 @@ select {
 }
 
 .tree-card {
-    /* width: 115px;
-    height: 115px; */
+    width: 115px;
+    height: 115px;
 
-    min-width: 115px;
-    min-height: 115px;
+    /* min-width: 115px;
+    min-height: 115px; */
 
     display: block;
 
     background-color: rgba(250, 250, 250, 0.548);
     border-radius: 10px;
+    box-shadow: 0 0 10px #7c7c7c47;
 
     cursor: pointer;
 }
@@ -950,6 +957,8 @@ select {
     width: 80px;
     height: 110px;
     margin: 0 auto;
+
+    /* object-fit: cover; */
 }
 
 
@@ -970,7 +979,7 @@ select {
 
     background-color: rgba(250, 250, 250, 0.548);
     border-radius: 10px;
-
+    
     overflow: hidden;
     cursor: pointer;
 }
@@ -1015,8 +1024,11 @@ select {
     display: block;
 
     border-radius: 50%;
-    border: 1px solid rgb(95, 94, 94);
-    box-shadow: 0 0 10px #7c7c7c, 0 0 40px #7c7c7c, 0 0 80px #7c7c7c;  
+    /* border: 1px solid rgb(95, 94, 94);
+    box-shadow: 0 0 10px #7c7c7c, 0 0 40px #7c7c7c, 0 0 80px #7c7c7c;   */
+
+    border: 1px solid rgb(95 94 94 / 55%);
+    box-shadow: 0 0 10px #7c7c7cb5, 0 0 40px #7c7c7cb5, 0 0 80px #7c7c7c5c;
 }
 
 .fairy-light__view_multi {
@@ -1029,7 +1041,7 @@ select {
 }
 
 .fairy-light__view_red {
-    background-color: red;
+    background-color: #ff4c4c;
 }
 
 .fairy-light__view_red:hover,
@@ -1038,7 +1050,7 @@ select {
 }
 
 .fairy-light__view_yellow {
-    background-color: yellow;
+    background-color: #ffff47;
 }
 
 .fairy-light__view_yellow:hover,
@@ -1047,7 +1059,7 @@ select {
 }
 
 .fairy-light__view_green {
-    background-color: green;
+    background-color: #61f361;
 }
 
 .fairy-light__view_green:hover,
@@ -1056,7 +1068,7 @@ select {
 }
 
 .fairy-light__view_blue {
-    background-color: blue;
+    background-color: #0e9bff;
 }
 
 .fairy-light__view_blue:hover,
@@ -1065,16 +1077,59 @@ select {
 }
 
 
+
+/* ----------- Snow -------------- */
+
+.snow-option {
+    display: inline-block;
+
+    transition: 0.2s linear;
+    cursor: pointer;
+}
+
+.snow-option__checkbox {
+    display: none;
+}
+
+.shape-filter__shape-group:hover,
+.shape-filter__checkbox:checked ~ .shape-filter__shape-name{
+    color: rgb(214, 178, 80);
+}
+
+.snow-option__view {
+    width: 30px;
+    height: 30px;
+    display: inline-block;
+
+    background-size: contain;
+    background-repeat: no-repeat;
+
+    transition: 0.2s linear;
+}
+
+.snow-option__view {
+    background-image: url('./assets/svg/snow.svg');
+}
+
+.snow-option__view :hover,
+.snow-option:hover .snow-option__view,
+.snow-option__checkbox:checked + .snow-option__view  {
+    background-image: url('./assets/svg/snow_active.svg');
+}
+
 /* ----------- Selected-toys -------------- */
 
 .selected-toys {
     width: 100%;
+    flex-grow: 1;
 }
 
 .selected-toys__content {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    /* justify-content: space-between; */
+    /* justify-content: space-evenly; */
     gap: 10px;
 }
 
@@ -1094,18 +1149,26 @@ select {
 
     background-color: rgba(255, 255, 255, 0.37);
     border-radius: 10px;
+    box-shadow: 0 0 10px #7c7c7c47;
+
     overflow: hidden;
 }
 
 .selected-toys-card__img {
-    width: 60px;
-    height: 60px;
+
+    width: 50px;
+    height: 50px;
 
     position: absolute;
-    top: calc(50% - 30px);
-    left: calc(50% - 30px);
+    top: calc(50% - 25px);
+    left: calc(50% - 25px);
+
+    cursor: grab;
 }
 
+.selected-toys-card__img:active {
+    cursor: grabbing;
+}
 
 .selected-toys-card__value {
     position: absolute;
@@ -1130,8 +1193,11 @@ select {
     bottom: -5px;
     right: -5px;
 
-    background-color: tomato;
+    /* background-color: #ebdfcb; */
+    background-color: #f9efde;
+
     border-radius: 8px;
+    box-shadow: 0 0 10px #7c7c7c78, 0 0 40px #7c7c7c5e, 0 0 80px #7c7c7c61;
     z-index: 10;
 }
 
@@ -1148,15 +1214,18 @@ select {
 /* ----------- Tree -------------- */
 
 .tree {
+    margin-top: auto;
+    position: relative;
+
     display: flex;
-    height: 100%;
+    /* height: 100%; */
     justify-content: center;
     align-items: flex-end;
 }
 
 .tree__img {
-    max-width: 500px;
-    padding-bottom: 25px;
+    max-width: 490px;
+    padding-bottom: 5px;
 }
 
 /* ----------- Switch -------------- */
@@ -1170,7 +1239,7 @@ select {
 }
 
 .switch__slider {
-    height: 30px;
+    height: 24px;
     width: 60px;
     display: block;
 
@@ -1178,6 +1247,7 @@ select {
 
     background-color: rgb(243 236 236 / 84%);
     border-radius: 20px;
+    box-shadow: 0 0 10px #7c7c7c3d, 0 0 40px #7c7c7c45;
 
     transition: 0.2s linear;
 }
@@ -1185,25 +1255,151 @@ select {
 .switch__slider::before {
     content: '';
     display: inline-block;
-    width: 24px;
-    height: 24px;
+    width: 20px;
+    height: 20px;
 
     position: absolute;
-    top: calc(50% - 12px);
+    top: calc(50% - 10px);
     left: 3px;
 
     border-radius: 50%;
     background-color: white;
+    box-shadow: 0 0 10px #7c7c7c30;
 
     transition: 0.2s linear;
 }
 
 .switch__checkbox:checked + .switch__slider {
-    background-color: rgba(104, 230, 88, 0.84);
+    background-color: rgba(238, 198, 87, 0.84);
+    background-color: rgb(214, 178, 80);
 }
 
 .switch__checkbox:checked + .switch__slider::before {
-    left: 33px;
+    left: 37px;
 }
 
+/* ----------- Fairly-light -------------- */
 
+.fairly-light-decor {
+    position: absolute;
+    top: 0%;
+}
+
+.fairly-light-decor-part {
+    position: absolute;
+}
+
+.fairly-light-decor-part__item {
+    width: 4px;
+    height: 4px;
+
+    position: absolute;
+
+    background-color: white;
+    border-radius: 50%;
+    box-shadow: white;
+
+    animation-name: fairly-light-animation;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+
+    animation-play-state: paused;
+    opacity: 0;
+    visibility: hidden;
+}
+
+.fairly-light-decor-part__item:nth-child(2n+1) {
+    animation-duration: 0.9s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(2n+1) {
+    background-color: rgb(101, 206, 255);
+}
+
+.fairly-light-decor-part__item:nth-child(3n+1) {
+    animation-duration: 1.4s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(3n+1) {
+    background-color: rgb(252, 255, 103);
+}
+
+.fairly-light-decor-part__item:nth-child(4n+2) {
+    animation-duration: 1.1s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(4n+2) {
+    background-color: rgb(255, 122, 122);
+}
+
+.fairly-light-decor-part__item:nth-child(5n+1) {
+    animation-duration: 1.7s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(5n+1) {
+    background-color: rgb(153, 255, 122);
+}
+
+.fairly-light-decor-part__item:nth-child(6n+2) {
+    animation-duration: 1.2s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(6n+2) {
+    background-color: rgb(123, 255, 215);
+}
+
+.fairly-light-decor-part__item:nth-child(7n+1) {
+    animation-duration: 0.6s;
+}
+
+.multi.fairly-light-decor-part__item:nth-child(7n+1) {
+    background-color: rgb(255, 119, 244);
+}
+
+.animation_on {
+    opacity: 1;
+    visibility: visible;
+    animation-play-state: running
+}
+
+@keyframes fairly-light-animation {
+    0% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 7px 1px #fff5a862;
+    }
+
+    50% {
+        opacity: 1;        
+        box-shadow: 0px 0px 7px 1px #fff5a8d7;
+    }
+
+    100% {
+        opacity: 0.2;
+        box-shadow: 0px 0px 7px 1px #fff5a862;
+    }
+}
+
+/* ----------- Media-Queries-------------- */
+
+@media (max-width: 1025px) {
+
+    .tree-card {
+        width: 90px;
+        height: 90px;
+    }
+    
+    .tree-card__img {
+        width: 62px;
+        height: 85px;
+    }
+    
+    .background-card {
+        width: 50px;
+        height: 50px;
+    }
+    
+    .fairy-light__view {
+        width: 15px;
+        height: 15px;
+    }
+}
