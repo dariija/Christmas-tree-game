@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import ReactDOM from 'react-dom';
 
 import './style.css';
@@ -7,10 +7,11 @@ import MainToys from './components/main/Main';
 import Footer from './components/footer/Footer';
 import toysData from './data/data';
 import './self-rating';
-// import MainTree from "./components/main/MainTree";
+import MainTree from './components/main/MainTree';
 
 function App() {
-    const [activePage, setActivePage] = useState('toys');
+    const [activePage, setActivePage] = useState('');
+    const [audioIsPlaying, setAudioIsPlaying] = useState(false);
 
     const [selectedToys, setSelectedToys] = useState<Array<string>>([]);
     const [selectedToysLogo, setSelectedToysLogo] = useState<number>(0);
@@ -28,12 +29,13 @@ function App() {
                 activePage={activePage}
                 handleChangeActivePage={setActivePage}
                 selectedToysLogo={selectedToysLogo}
+                audio={{ audioIsPlaying, setAudioIsPlaying }}
             />
 
             <main className="main">
                 <div className="container">
                     <MainToys toysData={toysData} selectToys={selectToys} />
-                    {/* <MainTree toysData={toysData} selectedToysNumbers={selectToys.value}/> */}
+                    <MainTree toysData={toysData} selectedToysNumbers={selectToys.value} />
                 </div>
             </main>
 
