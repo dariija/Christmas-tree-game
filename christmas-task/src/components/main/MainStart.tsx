@@ -5,9 +5,7 @@ type Props = {
 };
 
 export default function MainStart({ handleChangeActivePage }: Props) {
-    const changeActivePage = (event: React.MouseEvent, href: string) => {
-        event.preventDefault();
-        window.history.pushState({}, '', href);
+    const changeActivePage = (event: React.MouseEvent) => {
         const navEvent = new PopStateEvent('popstate');
         window.dispatchEvent(navEvent);
         handleChangeActivePage('toys');
@@ -21,13 +19,11 @@ export default function MainStart({ handleChangeActivePage }: Props) {
                 <div className="welcome-window__content">
                     <p className="welcome-window__text">Christmas game &#34;Decorate the tree&#34;</p>
                 </div>
-                <button
-                    className="button button_start-game"
-                    onClick={(event) => changeActivePage(event, '/toys')}
-                    type="button"
-                >
-                    Start game
-                </button>
+                <div className="button button_start-game">
+                    <a className="link-start-game" onClick={changeActivePage} href="#toys">
+                        Start game
+                    </a>
+                </div>
             </div>
         </div>
     );
