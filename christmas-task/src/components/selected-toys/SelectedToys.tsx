@@ -20,9 +20,6 @@ export default function SelectedToys({ toysData, selectedToysNumbers }: Props) {
         });
     }
 
-    // const [toyQuantity, setToyQuantity] = useState(quantity);
-    // useEffect(() => setToyQuantity(test.length));
-
     return (
         <div className="selected-toys">
             <p className="selected-toys__title">Toys</p>
