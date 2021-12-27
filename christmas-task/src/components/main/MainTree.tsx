@@ -1,5 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
-import backgrounds from '../../data/backgrounds';
+import React, { useEffect, useState } from 'react';
 import { checkLocalStorageTreeSettings } from '../../functions/checkLocalStorage';
 import saveToLocalStorage from '../../functions/saveToLocalStorage';
 import TToyCard from '../../types/TToyCard';
@@ -63,8 +62,6 @@ export default function MainTree({ toysData, selectedToysNumbers, music }: Props
     useEffect(() => {
         checkLocalStorageTreeSettings(treeSettings);
     }, []);
-
-    // const currentToyPosition = useRef();
 
     return (
         <section className="tree-main main__tree-page ">

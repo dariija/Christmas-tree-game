@@ -5,7 +5,7 @@ type Props = {
 };
 
 export default function MainStart({ handleChangeActivePage }: Props) {
-    const changeActivePage = (event: React.MouseEvent) => {
+    const changeActivePage = () => {
         const navEvent = new PopStateEvent('popstate');
         window.dispatchEvent(navEvent);
         handleChangeActivePage('toys');

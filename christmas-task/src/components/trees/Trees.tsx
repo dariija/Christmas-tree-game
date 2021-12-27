@@ -11,7 +11,6 @@ type Props = {
 };
 
 export default function Trees({ settings }: Props) {
-
     return (
         <div className="trees">
             <p className="trees__title ">Choose tree</p>

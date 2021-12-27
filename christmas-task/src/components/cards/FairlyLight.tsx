@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 type Props = {
     colour: string;
@@ -13,9 +13,6 @@ export default function FairlyLight({ colour, settings }: Props) {
         settings.setValue(target.value);
     };
 
-    // useEffect(() => {
-    //     console.log(settings.value);
-    // })
     return (
         <label className="fairy-light" htmlFor={`fairy_light_${colour}`}>
             <input

@@ -37,14 +37,12 @@ export default function SelectedToyCard({ quantity, num, id }: Props) {
         const element = document.elementFromPoint(event.pageX, event.pageY);
         if (element && element.id !== 'tree_map') {
             const toyCard = document.getElementById(id);
-            // console.log(toyCard);
-            // console.log(target.id);
             const toy = document.getElementById(target.id) as HTMLElement;
             toy.style.top = '';
             toy.style.left = '';
             toyCard?.append(toy);
-        };
-        cardChangeQuantity()
+        }
+        cardChangeQuantity();
     };
 
     return (
@@ -58,7 +56,6 @@ export default function SelectedToyCard({ quantity, num, id }: Props) {
                     id={`${num}_${index}`}
                     draggable
                     onDragStart={(event) => handleDragStart(event, `${num}_${index}`)}
-                    // onDrag={onDrag}
                     onDragEnd={handlerDragEnd}
                 />
             ))}

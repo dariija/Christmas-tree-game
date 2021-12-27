@@ -7,7 +7,7 @@ type Props = {
 };
 
 export default function NavItem({ pageName, active, handleChangeActivePage }: Props) {
-    const changeActivePage = (event: React.MouseEvent) => {
+    const changeActivePage = () => {
         const navEvent = new PopStateEvent('popstate');
         window.dispatchEvent(navEvent);
         handleChangeActivePage(pageName);

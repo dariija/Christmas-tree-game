@@ -11,8 +11,6 @@ type Props = {
 };
 
 export default function Backgrounds({ settings }: Props) {
-    const cardsType = 'background';
-
     return (
         <div className="backgrounds">
             <p className="backgrounds__title">Choose background</p>
