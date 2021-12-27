@@ -1,14 +1,16 @@
-import React, { Dispatch, SetStateAction } from 'react';
+import React, { Dispatch, SetStateAction, useRef } from 'react';
 import Nav from '../navigation/Navigation';
 import Music from '../music/Music';
+import track from '../../assets/audio/track_1.mp3';
 
 type Props = {
     activePage: string;
     handleChangeActivePage: Dispatch<SetStateAction<string>>;
     selectedToysLogo: number;
     audio: {
-        audioIsPlaying: boolean;
-        setAudioIsPlaying: React.Dispatch<React.SetStateAction<boolean>>;
+        name: string;
+        value: boolean;
+        setValue: React.Dispatch<React.SetStateAction<boolean>>;
     };
 };
 

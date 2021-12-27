@@ -8,7 +8,7 @@ import Footer from './components/footer/Footer';
 import toysData from './data/data';
 import './self-rating';
 import MainTree from './components/main/MainTree';
-import { checkLocalStorageSelectedToys } from './functions/checkLocalStorage';
+import { checkLocalStorageSelectedToys, checkLocalStorageMusic } from './functions/checkLocalStorage';
 import MainStart from './components/main/MainStart';
 
 function Route({ path, children }: { path: string; children: JSX.Element }) {
@@ -30,7 +30,6 @@ function Route({ path, children }: { path: string; children: JSX.Element }) {
 
 function App() {
     const [activePage, setActivePage] = useState('');
-    const [audioIsPlaying, setAudioIsPlaying] = useState(false);
 
     const select = checkLocalStorageSelectedToys('select');
     const [selectedToys, setSelectedToys] = useState<string[]>(select || []);
@@ -43,6 +42,8 @@ function App() {
         setLogoValue: setSelectedToysLogo,
     };
 
+    const musicCheck = checkLocalStorageMusic('music');
+    const [audioIsPlaying, setAudioIsPlaying] = useState(musicCheck);
     const music = {
         name: 'music',
         value: audioIsPlaying,
@@ -53,13 +54,21 @@ function App() {
         setSelectedToysLogo(selectedToys.length);
     }, []);
 
+    window.onunload = () => {
+        localStorage.setItem(music.name, JSON.stringify(music.value));
+    };
+
+    window.onpopstate = () => {
+        localStorage.setItem(music.name, JSON.stringify(music.value));
+    };
+
     return (
         <>
             <Header
                 activePage={activePage}
                 handleChangeActivePage={setActivePage}
                 selectedToysLogo={selectedToysLogo}
-                audio={{ audioIsPlaying, setAudioIsPlaying }}
+                audio={music}
             />
 
             <main className="main">

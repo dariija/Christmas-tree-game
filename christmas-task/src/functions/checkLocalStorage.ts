@@ -24,4 +24,11 @@ function checkLocalStorageSelectedToys(name: string): string[] {
     return [];
 }
 
-export { checkLocalStorageSelectedToys, checkLocalStorageTreeSettings };
+function checkLocalStorageMusic(name: string): boolean {
+    if (localStorage.getItem(name)) {
+        return JSON.parse(localStorage.getItem(name) as string);
+    }
+    return false;
+}
+
+export { checkLocalStorageSelectedToys, checkLocalStorageTreeSettings, checkLocalStorageMusic };
