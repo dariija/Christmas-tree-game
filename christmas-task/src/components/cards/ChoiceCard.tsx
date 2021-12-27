@@ -1,24 +1,31 @@
 import React from 'react';
 
 type Props = {
-    name: string;
-    num: number;
+    num: string;
+    src: string;
+    settings: {
+        name: string;
+        value: string;
+        setValue: React.Dispatch<React.SetStateAction<string>>;
+    };
 };
 
-export default function ChoiceCard({ name, num }: Props) {
-    const ext = name === 'background' ? 'jpg' : 'png';
-    const src = name === 'decorated-tree' ? '' : `../../assets/${name}/${num}.${ext}`;
+export default function ChoiceCard({ num, src, settings }: Props) {
+    const handlerChange = ({ target }: { target: HTMLInputElement }) => {
+        settings.setValue(target.value);
+    };
 
     return (
-        <label className={`${name}-card`} htmlFor={`${name}_${num}`}>
+        <label className={`${settings.name}-card`} htmlFor={`${settings.name}_${num}`}>
             <input
-                className={`${name}-card__radio`}
-                id={`${name}_${num}`}
+                className={`${settings.name}-card__radio`}
+                id={`${settings.name}_${num}`}
                 value={num}
                 type="radio"
-                name={`${name}-choice`}
+                name={`${settings.name}-choice`}
+                onChange={handlerChange}
             />
-            <img className={`${name}-card___img`} src={src} alt={name} />
+            <img className={`${settings.name}-card__img`} src={src} alt={settings.name} />
         </label>
     );
 }
