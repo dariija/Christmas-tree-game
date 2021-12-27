@@ -9,6 +9,7 @@ import toysData from './data/data';
 import './self-rating';
 import MainTree from './components/main/MainTree';
 import { checkLocalStorageSelectedToys } from './functions/checkLocalStorage';
+import MainStart from './components/main/MainStart';
 
 function Route({ path, children }: { path: string; children: JSX.Element }) {
     const [currentPath, setCurrentPath] = useState(window.location.pathname);
@@ -64,7 +65,7 @@ function App() {
             <main className="main">
                 <div className="container">
                     <Route path="/">
-                        <div>Work!</div>
+                        <MainStart handleChangeActivePage={setActivePage} />
                     </Route>
 
                     <Route path="/toys">
