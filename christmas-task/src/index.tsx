@@ -12,12 +12,11 @@ import { checkLocalStorageSelectedToys, checkLocalStorageMusic } from './functio
 import MainStart from './components/main/MainStart';
 
 function Route({ path, children }: { path: string; children: JSX.Element }) {
-    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+    const [currentPath, setCurrentPath] = useState(window.location.hash);
 
     useEffect(() => {
         const onLocationChange = () => {
-            console.log('Location Change');
-            setCurrentPath(window.location.pathname);
+            setCurrentPath(window.location.hash);
         };
         window.addEventListener('popstate', onLocationChange);
         return () => {
@@ -30,6 +29,7 @@ function Route({ path, children }: { path: string; children: JSX.Element }) {
 
 function App() {
     const [activePage, setActivePage] = useState('');
+    console.log(activePage);
 
     const select = checkLocalStorageSelectedToys('select');
     const [selectedToys, setSelectedToys] = useState<string[]>(select || []);
@@ -73,15 +73,15 @@ function App() {
 
             <main className="main">
                 <div className="container">
-                    <Route path="/">
+                    <Route path="">
                         <MainStart handleChangeActivePage={setActivePage} />
                     </Route>
 
-                    <Route path="/toys">
+                    <Route path="#toys">
                         <MainToys toysData={toysData} selectToys={selectToys} />
                     </Route>
 
-                    <Route path="/tree">
+                    <Route path="#tree">
                         <MainTree toysData={toysData} selectedToysNumbers={selectToys.value} music={music} />
                     </Route>
                 </div>

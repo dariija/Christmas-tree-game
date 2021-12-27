@@ -7,9 +7,7 @@ type Props = {
 };
 
 export default function NavItem({ pageName, active, handleChangeActivePage }: Props) {
-    const changeActivePage = (event: React.MouseEvent, href: string) => {
-        event.preventDefault();
-        window.history.pushState({}, '', href);
+    const changeActivePage = (event: React.MouseEvent) => {
         const navEvent = new PopStateEvent('popstate');
         window.dispatchEvent(navEvent);
         handleChangeActivePage(pageName);
@@ -19,8 +17,8 @@ export default function NavItem({ pageName, active, handleChangeActivePage }: Pr
         <li className="nav__item">
             <a
                 className={`nav__link ${active ? 'nav__link_active' : ''} ${pageName === '' ? 'nav__link_logo' : ''}`}
-                href={`/${pageName}`}
-                onClick={(event) => changeActivePage(event, `/${pageName}`)}
+                href={pageName === '' ? '' : `#${pageName}`}
+                onClick={changeActivePage}
             >
                 {pageName === '' ? <span className="tree-logo" /> : pageName}
             </a>
