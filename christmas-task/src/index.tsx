@@ -8,13 +8,32 @@ import Footer from './components/footer/Footer';
 import toysData from './data/data';
 import './self-rating';
 import MainTree from './components/main/MainTree';
+import { checkLocalStorageSelectedToys } from './functions/checkLocalStorage';
+
+function Route({ path, children }: { path: string; children: JSX.Element }) {
+    const [currentPath, setCurrentPath] = useState(window.location.pathname);
+
+    useEffect(() => {
+        const onLocationChange = () => {
+            console.log('Location Change');
+            setCurrentPath(window.location.pathname);
+        };
+        window.addEventListener('popstate', onLocationChange);
+        return () => {
+            window.removeEventListener('popstate', onLocationChange);
+        };
+    }, []);
+
+    return currentPath === path ? children : null;
+}
 
 function App() {
     const [activePage, setActivePage] = useState('');
     const [audioIsPlaying, setAudioIsPlaying] = useState(false);
 
-    const [selectedToys, setSelectedToys] = useState<Array<string>>([]);
-    const [selectedToysLogo, setSelectedToysLogo] = useState<number>(0);
+    const select = checkLocalStorageSelectedToys('select');
+    const [selectedToys, setSelectedToys] = useState<string[]>(select || []);
+    const [selectedToysLogo, setSelectedToysLogo] = useState<number>(selectedToys.length || 0);
 
     const selectToys = {
         name: 'select',
@@ -22,6 +41,16 @@ function App() {
         setValue: setSelectedToys,
         setLogoValue: setSelectedToysLogo,
     };
+
+    const music = {
+        name: 'music',
+        value: audioIsPlaying,
+        setValue: setAudioIsPlaying,
+    };
+
+    useEffect(() => {
+        setSelectedToysLogo(selectedToys.length);
+    }, []);
 
     return (
         <>
@@ -34,8 +63,17 @@ function App() {
 
             <main className="main">
                 <div className="container">
-                    <MainToys toysData={toysData} selectToys={selectToys} />
-                    <MainTree toysData={toysData} selectedToysNumbers={selectToys.value} />
+                    <Route path="/">
+                        <div>Work!</div>
+                    </Route>
+
+                    <Route path="/toys">
+                        <MainToys toysData={toysData} selectToys={selectToys} />
+                    </Route>
+
+                    <Route path="/tree">
+                        <MainTree toysData={toysData} selectedToysNumbers={selectToys.value} music={music} />
+                    </Route>
                 </div>
             </main>
 

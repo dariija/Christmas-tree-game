@@ -2,6 +2,7 @@ import React from 'react';
 
 type Props = {
     settings: {
+        name: string;
         value: boolean;
         setValue: React.Dispatch<React.SetStateAction<boolean>>;
     };

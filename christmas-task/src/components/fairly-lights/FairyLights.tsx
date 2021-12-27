@@ -3,6 +3,7 @@ import FairlyLight from '../cards/FairlyLight';
 
 type Props = {
     settings: {
+        name: string;
         value: string;
         setValue: React.Dispatch<React.SetStateAction<string>>;
     };

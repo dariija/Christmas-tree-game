@@ -7,13 +7,10 @@ type Props = {
 };
 
 export default function Nav({ activePage, handleChangeActivePage }: Props) {
-    const pages = ['toys', 'tree'];
+    const pages = ['', 'toys', 'tree'];
 
     return (
         <ul className="nav">
-            <li className="nav__item">
-                <span className="tree-logo" />
-            </li>
             {pages.map((pageName, index) => (
                 <NavItem
                     pageName={pageName}

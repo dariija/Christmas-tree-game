@@ -5,7 +5,7 @@ import Sorting from '../../filters/sorting/Sorting';
 import SizeFilter from '../../filters/size-filter/SizeFilter';
 import ShapeFilter from '../../filters/shape-filter/ShapeFilter';
 import ColourFilter from '../../filters/colour-filter/ColourFilter';
-import ResetFilters from '../../filters/reset-filters/ResetFilters';
+import ResetFilters from '../../filters/reset/ResetFilters';
 import QuantityFilter from '../../filters/quantity-filter/QuantityFilter';
 import FavouriteFilter from '../../filters/favourite-filter/FavouriteFilter';
 import PurchaseYearFilter from '../../filters/purchase-year-filter/PurchaseYearFilter';

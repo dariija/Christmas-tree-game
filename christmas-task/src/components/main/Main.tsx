@@ -30,6 +30,7 @@ export default function MainToys({ toysData, selectToys }: Props) {
 
     const filters: TFilters = {
         search: {
+            name: 'search',
             value: search,
             setValue: setSearch,
         },
@@ -81,6 +82,10 @@ export default function MainToys({ toysData, selectToys }: Props) {
     }, []);
 
     window.onunload = () => {
+        saveToLocalStorage(filters);
+    };
+
+    window.onpopstate = () => {
         saveToLocalStorage(filters);
     };
 
