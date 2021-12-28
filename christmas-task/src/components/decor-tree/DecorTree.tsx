@@ -81,7 +81,7 @@ export default function DecorTree({ settings }: Props) {
                         onDrop={handleOnDrop}
                     />
                 </map>
-                <img className="tree__img" src={trees[settings.tree.value]} useMap="#tree-map" alt="decor-tree" />
+                <img className="tree__img" src={trees[settings.tree.value]} useMap="#tree-map" alt="" />
 
                 <FairlyLightDecor colour={settings.fairyLights.value} />
             </div>
