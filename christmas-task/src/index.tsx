@@ -29,7 +29,6 @@ function Route({ path, children }: { path: string; children: JSX.Element }) {
 
 function App() {
     const [activePage, setActivePage] = useState('');
-    console.log(activePage);
 
     const select = checkLocalStorageSelectedToys('select');
     const [selectedToys, setSelectedToys] = useState<string[]>(select || []);

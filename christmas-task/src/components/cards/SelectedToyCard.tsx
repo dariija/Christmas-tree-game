@@ -19,7 +19,6 @@ export default function SelectedToyCard({ quantity, num, id }: Props) {
         const e = event;
         e.dataTransfer.effectAllowed = 'move';
         const toyMeasuremenrs = (e.target as HTMLImageElement).getBoundingClientRect();
-
         const toyOptions = {
             id: toyId,
             toyDimensions: {
@@ -34,15 +33,26 @@ export default function SelectedToyCard({ quantity, num, id }: Props) {
     const handlerDragEnd = (event: React.DragEvent<HTMLImageElement>) => {
         event.preventDefault();
         const target = event.target as HTMLElement;
-        const element = document.elementFromPoint(event.pageX, event.pageY);
-        if (element && element.id !== 'tree_map') {
-            const toyCard = document.getElementById(id);
+
+        if (target.dataset.inTargetZone === 'false') {
+            const toyCard = document.getElementById(id) as HTMLElement;
             const toy = document.getElementById(target.id) as HTMLElement;
+
             toy.style.top = '';
             toy.style.left = '';
-            toyCard?.append(toy);
+            toyCard.append(toy);
         }
         cardChangeQuantity();
+    };
+
+    const onDrag = (event: React.DragEvent) => {
+        const targetEelement = document.getElementById('tree_map');
+        const elemBelow = document.elementFromPoint(event.pageX, event.pageY) as Element;
+        const toy = event.target as HTMLElement;
+
+        if (targetEelement === elemBelow) {
+            toy.dataset.inTargetZone = 'true';
+        } else toy.dataset.inTargetZone = 'false';
     };
 
     return (
@@ -57,6 +67,7 @@ export default function SelectedToyCard({ quantity, num, id }: Props) {
                     draggable
                     onDragStart={(event) => handleDragStart(event, `${num}_${index}`)}
                     onDragEnd={handlerDragEnd}
+                    onDrag={onDrag}
                 />
             ))}
 

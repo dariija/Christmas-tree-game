@@ -27,10 +27,10 @@ type Props = {
 const handleOnDrop = (event: React.DragEvent<HTMLElement>) => {
     const e = event;
     e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
 
     const target = e.target as HTMLElement;
     const targetParent = target.offsetParent as HTMLElement;
-    // const targetCoordinates = target.getBoundingClientRect();
     const targetParentCoordinates = targetParent.getBoundingClientRect();
 
     const toyData = JSON.parse(e.dataTransfer.getData('toyData'));
@@ -43,13 +43,12 @@ const handleOnDrop = (event: React.DragEvent<HTMLElement>) => {
     toy.style.left = `${(toyLeftPx * 100) / targetParent.offsetWidth}%`;
 
     target.appendChild(toy);
-    // targetParent.appendChild(toy);
-    event.stopPropagation();
 };
 
 const handleDragOver = (event: React.DragEvent<HTMLElement>) => {
     const e = event;
     e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
 };
 
 const handleDragEnter = (event: React.DragEvent) => {
@@ -59,7 +58,6 @@ const handleDragEnter = (event: React.DragEvent) => {
 const handleDragLeave = (event: React.DragEvent) => {
     const e = event;
     e.preventDefault();
-    console.log(e);
 };
 
 export default function DecorTree({ settings }: Props) {
@@ -68,8 +66,6 @@ export default function DecorTree({ settings }: Props) {
             <div className={`snow-decor ${settings.snow.value ? 'animation_on' : ''}`} />
 
             <div className="tree">
-                <img className="tree__img" src={trees[settings.tree.value]} useMap="#tree-map" alt="" />
-
                 <map className="tree-map" name="tree-map">
                     <area
                         target=""
@@ -85,6 +81,7 @@ export default function DecorTree({ settings }: Props) {
                         onDrop={handleOnDrop}
                     />
                 </map>
+                <img className="tree__img" src={trees[settings.tree.value]} useMap="#tree-map" alt="decor-tree" />
 
                 <FairlyLightDecor colour={settings.fairyLights.value} />
             </div>
