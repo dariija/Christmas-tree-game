@@ -6,7 +6,6 @@ import Header from './components/header/Header';
 import MainToys from './components/main/Main';
 import Footer from './components/footer/Footer';
 import toysData from './data/data';
-import './self-rating';
 import MainTree from './components/main/MainTree';
 import { checkLocalStorageSelectedToys, checkLocalStorageMusic } from './functions/checkLocalStorage';
 import MainStart from './components/main/MainStart';
