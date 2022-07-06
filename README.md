@@ -9,9 +9,8 @@
 This SPA application was created by using React.
 
 ## Used technologies
-- HTML5/CSS3
 - TypeScript
-- React/React Hooks
+- React
 - Rc-slider
 - Webpack
 
