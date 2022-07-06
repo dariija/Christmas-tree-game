@@ -5,8 +5,7 @@
 <h2 align="center"><a  href="https://dariija.github.io/Christmas-tree-game/">Live Demo</a></h2>
 
 ## Description
-Сhristmas tree game is a game where you can dress up a Christmas tree with toys and add extra decorations. <br/>
-This SPA application was created by using React.
+This is a game application where you can decorate the Christmas tree. At your disposal are toys that can be grouped and sorted according to various criteria, searched by name, added to favorites. With the selected toys, you can decorate the Christmas tree, as well as add additional decorative elements
 
 ## Used technologies
 - TypeScript
